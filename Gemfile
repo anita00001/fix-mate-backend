@@ -48,3 +48,5 @@ group :development do
 end
 
 gem "devise", "~> 4.9"
+gem 'devise-jwt'
+gem 'jsonapi-serializer'
