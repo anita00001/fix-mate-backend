@@ -5,7 +5,7 @@ class CreateExperts < ActiveRecord::Migration[7.1]
       t.text :last_name
       t.text :email
       t.text :address
-      t.references :specialization, null: false, foreign_key: true
+      t.references :specializations, null: false, foreign_key: true
       t.integer :experience
       t.boolean :status, default: true
       t.boolean :removed, default: false
