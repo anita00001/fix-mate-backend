@@ -1,8 +1,8 @@
 class CreateReservations < ActiveRecord::Migration[7.1]
   def change
     create_table :reservations do |t|
-      t.integer :expert_id
-      t.integer :user_id
+      t.references :user, null: false, foreign_key: true
+      t.references :expert, null: false, foreign_key: true
       t.string :city
       t.date :date
 
