@@ -1,6 +1,15 @@
 class CreateExperts < ActiveRecord::Migration[7.1]
   def change
     create_table :experts do |t|
+      t.text :first_name
+      t.text :last_name
+      t.text :email
+      t.text :address
+      t.integer :specialization_id
+      t.integer :experience
+      t.boolean :status
+      t.text :image
+      t.decimal :fee
 
       t.timestamps
     end
