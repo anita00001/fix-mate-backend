@@ -6,4 +6,7 @@ class Expert < ApplicationRecord
   validates :experience, presence: true
   validates :image, presence: true
   validates :fee, presence: true
+
+  has_many :reservations
+  belongs_to :specialization
 end
