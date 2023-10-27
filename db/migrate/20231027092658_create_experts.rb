@@ -7,7 +7,7 @@ class CreateExperts < ActiveRecord::Migration[7.1]
       t.text :address
       t.integer :specialization_id
       t.integer :experience
-      t.boolean :status
+      t.boolean :status, default: true
       t.text :image
       t.decimal :fee
 
