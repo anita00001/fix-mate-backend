@@ -28,4 +28,29 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_27_130230) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "experts", force: :cascade do |t|
+    t.text "first_name"
+    t.text "last_name"
+    t.text "email"
+    t.text "address"
+    t.integer "experience"
+    t.boolean "status", default: true
+    t.boolean "removed", default: false
+    t.text "image"
+    t.decimal "fee"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "specialization_id", null: false
+    t.index ["specialization_id"], name: "index_experts_on_specialization_id"
+  end
+
+  create_table "specializations", force: :cascade do |t|
+    t.text "name"
+    t.text "description"
+    t.text "icon"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "experts", "specializations"
 end
