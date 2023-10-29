@@ -8,4 +8,9 @@ Rails.application.routes.draw do
     sessions: "users/sessions",
     registrations: "users/registrations"
   }
+  get "up" => "rails/health#show", as: :rails_health_check
+
+  resources :experts, only: [:index, :new, :show ] do
+    resources :specializations, only: [:index,:new, :show]
+  end
 end
