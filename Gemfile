@@ -52,3 +52,5 @@ end
 
 gem 'devise'
 gem 'devise-jwt'
+
+gem 'factory_bot_rails', '~> 6.2'
