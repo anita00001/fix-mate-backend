@@ -30,14 +30,14 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_30_075500) do
   end
 
   create_table "reservations", force: :cascade do |t|
-    t.bigint "experts_id", null: false
-    t.bigint "users_id", null: false
+    t.bigint "expert_id", null: false
+    t.bigint "user_id", null: false
     t.text "city"
     t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["experts_id"], name: "index_reservations_on_experts_id"
-    t.index ["users_id"], name: "index_reservations_on_users_id"
+    t.index ["expert_id"], name: "index_reservations_on_expert_id"
+    t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
   create_table "specializations", force: :cascade do |t|
@@ -64,6 +64,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_30_075500) do
   end
 
   add_foreign_key "experts", "specializations"
-  add_foreign_key "reservations", "experts", column: "experts_id"
-  add_foreign_key "reservations", "users", column: "users_id"
+  add_foreign_key "reservations", "experts"
+  add_foreign_key "reservations", "users"
 end
