@@ -1,6 +1,6 @@
 class ExpertsController < ApplicationController
   def index
-    @experts = Expert.includes(:specialization).where(removed: :true)
+    @experts = Expert.includes(:specialization).where(removed: true)
 
     render json: @experts
   end
@@ -28,6 +28,7 @@ class ExpertsController < ApplicationController
   private
 
   def recipe_params
-    params.require(:expert).permit(:first_name, :last_name, :email, :address, :experience, :status, :removed, :image, :fee)
+    params.require(:expert).permit(:first_name, :last_name, :email, :address, :experience, :status, :removed, :image,
+                                   :fee)
   end
 end
