@@ -1,0 +1,160 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/experts":
+    get:
+      summary: List all experts
+      tags:
+      - Experts
+      description: List all experts
+      security:
+      - Bearer: {}
+      responses:
+        '200':
+          description: List of experts
+    post:
+      summary: Create a new expert
+      tags:
+      - Experts
+      parameters: []
+      responses:
+        '201':
+          description: Expert created
+        '422':
+          description: Invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                last_name:
+                  type: string
+                email:
+                  type: string
+                address:
+                  type: string
+                experience:
+                  type: integer
+                status:
+                  type: string
+                removed:
+                  type: boolean
+                image:
+                  type: string
+                fee:
+                  type: integer
+                specialization_id:
+                  type: integer
+              required:
+              - first_name
+              - email
+  "/api/v1/experts/{id}":
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+    get:
+      summary: Show expert details
+      tags:
+      - Experts
+      description: Show expert details
+      security:
+      - Bearer: {}
+      responses:
+        '200':
+          description: Expert details
+        '404':
+          description: Expert not found
+    put:
+      summary: Toggle remove status of expert
+      tags:
+      - Experts
+      parameters: []
+      responses:
+        '200':
+          description: Toggle successful
+        '422':
+          description: Toggle failed
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                removed:
+                  type: boolean
+              required:
+              - removed
+  "/api/v1/reservations":
+    get:
+      summary: List all reservations
+      tags:
+      - Reservations
+      description: List all reservations
+      security:
+      - Bearer: {}
+      responses:
+        '200':
+          description: List of reservations
+    post:
+      summary: Create a new reservation
+      tags:
+      - Reservations
+      parameters: []
+      responses:
+        '201':
+          description: Reservation created
+        '422':
+          description: Invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                expert_id:
+                  type: integer
+                user_id:
+                  type: integer
+                city:
+                  type: string
+                date:
+                  type: string
+                  format: date
+              required:
+              - expert_id
+              - user_id
+              - city
+              - date
+  "/api/v1/reservations/{id}":
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+    get:
+      summary: Show reservation details
+      tags:
+      - Reservations
+      description: Show reservation details
+      security:
+      - Bearer: {}
+      responses:
+        '200':
+          description: Reservation details
+        '404':
+          description: Reservation not found
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: 127.0.0.1:4000
