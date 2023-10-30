@@ -27,7 +27,7 @@ class ExpertsController < ApplicationController
 
   private
 
-  def recipe_params
+  def expert_params
     params.require(:expert).permit(:first_name, :last_name, :email, :address, :experience, :status, :removed, :image,
                                    :fee)
   end
