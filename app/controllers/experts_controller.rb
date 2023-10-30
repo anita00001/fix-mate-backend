@@ -9,6 +9,18 @@ class ExpertsController < ApplicationController
     @expert = Expert.new
   end
 
+  def create
+    @expert = Expert.new(expert_params)
+
+    if @expert.save
+      render json: {
+        status: { success: true, message: 'Expert created successfully' }
+      }
+    else
+      render json: @expert.errors, status: :unprocessable_entity
+    end
+  end
+
   def show
     @expert = Expert.find(params[:id])
     @specialization = @expert.specialization
@@ -27,8 +39,8 @@ class ExpertsController < ApplicationController
 
   private
 
-  def recipe_params
+  def expert_params
     params.require(:expert).permit(:first_name, :last_name, :email, :address, :experience, :status, :removed, :image,
-                                   :fee)
+                                   :fee, :specialization_id)
   end
 end

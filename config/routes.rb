@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   }
   get "up" => "rails/health#show", as: :rails_health_check
 
-  resources :experts, only: [:index, :new, :show ] do
+  resources :experts, only: [:index, :new, :create, :show ] do
     member do
       put :toggle_remove
     end
