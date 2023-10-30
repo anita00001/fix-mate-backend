@@ -1,4 +1,6 @@
 class ExpertsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @experts = Expert.includes(:specialization).where(removed: true)
 
