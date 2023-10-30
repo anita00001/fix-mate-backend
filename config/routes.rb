@@ -16,4 +16,10 @@ Rails.application.routes.draw do
     end
     resources :specializations, only: [:index,:new, :show]
   end
+
+  namespace :api do
+    namespace :v1 do
+      resources :reservations
+    end
+  end
 end
