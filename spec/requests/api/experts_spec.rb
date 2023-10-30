@@ -1,5 +1,3 @@
-# spec/requests/api/experts_spec.rb
-
 require 'swagger_helper'
 
 describe 'Experts API' do
