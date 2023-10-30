@@ -22,7 +22,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_30_075500) do
     t.integer "experience"
     t.boolean "status", default: true
     t.boolean "removed", default: false
-    t.text "image"
     t.decimal "fee"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -30,10 +29,20 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_30_075500) do
     t.index ["specialization_id"], name: "index_experts_on_specialization_id"
   end
 
+  create_table "reservations", force: :cascade do |t|
+    t.bigint "expert_id", null: false
+    t.bigint "user_id", null: false
+    t.text "city"
+    t.date "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["expert_id"], name: "index_reservations_on_expert_id"
+    t.index ["user_id"], name: "index_reservations_on_user_id"
+  end
+
   create_table "specializations", force: :cascade do |t|
     t.text "name"
     t.text "description"
-    t.text "icon"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -55,4 +64,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_30_075500) do
   end
 
   add_foreign_key "experts", "specializations"
+  add_foreign_key "reservations", "experts"
+  add_foreign_key "reservations", "users"
 end
