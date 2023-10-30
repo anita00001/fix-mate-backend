@@ -62,4 +62,3 @@ gem 'devise-jwt'
 gem 'rswag'
 
 gem 'factory_bot_rails', '~> 6.2'
-
