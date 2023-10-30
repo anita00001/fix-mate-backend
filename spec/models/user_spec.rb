@@ -48,4 +48,13 @@ RSpec.describe User, type: :model do
       expect(User.new).to respond_to(:jwt_payload)
     end
   end
+
+  describe 'associations' do
+    it 'has many reservations' do
+      user = create(:user)
+      reservation = create(:reservation, user:)
+
+      expect(user.reservations).to include(reservation)
+    end
+  end
 end
