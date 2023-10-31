@@ -153,6 +153,87 @@ paths:
           description: Reservation details
         '404':
           description: Reservation not found
+  "/api/v1/users":
+    post:
+      summary: Login
+      tags:
+      - Users
+      parameters: []
+      responses:
+        '201':
+          description: User created
+        '422':
+          description: Invalid request
+        '200':
+          description: Login successful
+        '401':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+              - email
+              - password
+    delete:
+      summary: Logout
+      tags:
+      - Users
+      description: Log out the current user.
+      security:
+      - Bearer: {}
+      responses:
+        '200':
+          description: Logged out successfully
+    get:
+      summary: List all users
+      tags:
+      - Users
+      description: Retrieve a list of users.
+      responses:
+        '200':
+          description: List of users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/definitions/user"
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                "$ref": "#/definitions/unauthorized_response"
+  "/api/v1/users/{id}":
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+    get:
+      summary: Show user details
+      tags:
+      - Users
+      description: Retrieve details of a user by ID.
+      responses:
+        '200':
+          description: User details
+          content:
+            application/json:
+              schema:
+                type: object
+                "$ref": "#/definitions/user"
+        '404':
+          description: User not found
 servers:
 - url: https://{defaultHost}
   variables:

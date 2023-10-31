@@ -1,4 +1,4 @@
-class ExpertsController < ApplicationController
+class Api::V1::ExpertsController < ApplicationController
   before_action :authenticate_user!
 
   def index
