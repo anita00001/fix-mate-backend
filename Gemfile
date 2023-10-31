@@ -41,7 +41,7 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri windows]
 
-  gem 'rspec-rails', '~> 5.0'
+  gem 'rspec-rails', '~> 5.0.0'
 end
 
 group :development do
@@ -56,5 +56,8 @@ end
 
 gem 'devise'
 gem 'devise-jwt'
+
+gem 'rswag'
+gem 'rswag-api'
 
 gem 'factory_bot_rails', '~> 6.2'

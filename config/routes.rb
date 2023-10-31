@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  root to: 'experts#index'
+  
+  mount Rswag::Ui::Engine => '/api-docs'
+  mount Rswag::Api::Engine => '/api-docs'
+
   devise_for :users, path: '', path_names: {
     sign_in: 'login',
     sign_out: 'logout',
@@ -21,6 +26,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :reservations
       resources :experts
+      resources :users
     end
   end
 end
