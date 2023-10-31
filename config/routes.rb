@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'experts#index'
+ root to: 'api/v1/experts#index'
   
   mount Rswag::Ui::Engine => '/api-docs'
   mount Rswag::Api::Engine => '/api-docs'
