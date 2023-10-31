@@ -2,7 +2,7 @@ class Api::V1::ExpertsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @experts = Expert.includes(:specialization).where(removed: true)
+    @experts = Expert.includes(:specialization).where(removed: false)
 
     render json: @experts
   end
