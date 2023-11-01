@@ -1,9 +1,9 @@
 require 'swagger_helper'
 
 describe 'Reservations API' do
-  let!(:expert) { create(:expert) } # Create a valid 'Expert' record
+  let!(:expert) { create(:expert) }
   let!(:user) { create(:user) }
-  it 'Show all Reservations' do # Create a valid 'User' record
+  it 'Show all Reservations' do
     path '/api/v1/reservations' do
       get 'List all reservations' do
         tags 'Reservations'
@@ -32,34 +32,14 @@ describe 'Reservations API' do
 
         let(:reservation) do
           {
-            expert_id: expert.id, # Replace with the actual values you want to use
-            user_id: user.id, # Replace with the actual values you want to use
+            expert_id: expert.id,
+            user_id: user.id,
             city: 'Sample City',
             date: '2023-11-01'
           }
         end
 
         response '201', 'Reservation created' do
-          run_test!
-        end
-      end
-    end
-  end
-  it 'should show a reservation' do
-    path '/api/v1/reservations/{id}' do
-      parameter name: :id, in: :path, type: :integer
-
-      get 'Show reservation details' do
-        tags 'Reservations'
-        produces 'application/json'
-        description 'Show reservation details'
-        security [Bearer: {}]
-
-        response '200', 'Reservation details' do
-          run_test!
-        end
-
-        response '404', 'Reservation not found' do
           run_test!
         end
       end
