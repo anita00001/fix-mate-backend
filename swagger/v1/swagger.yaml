@@ -21,10 +21,8 @@ paths:
       - Experts
       parameters: []
       responses:
-        '201':
+        '200':
           description: Expert created
-        '422':
-          description: Invalid request
       requestBody:
         content:
           application/json:
@@ -45,195 +43,35 @@ paths:
                   type: string
                 removed:
                   type: boolean
-                image:
-                  type: string
                 fee:
                   type: integer
                 specialization_id:
                   type: integer
-              required:
-              - first_name
-              - email
-  "/api/v1/experts/{id}":
-    parameters:
-    - name: id
-      in: path
-      required: true
-      schema:
-        type: integer
-    get:
-      summary: Show expert details
-      tags:
-      - Experts
-      description: Show expert details
-      security:
-      - Bearer: {}
-      responses:
-        '200':
-          description: Expert details
-        '404':
-          description: Expert not found
-    put:
-      summary: Toggle remove status of expert
-      tags:
-      - Experts
-      parameters: []
-      responses:
-        '200':
-          description: Toggle successful
-        '422':
-          description: Toggle failed
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                removed:
-                  type: boolean
-              required:
-              - removed
-  "/api/v1/reservations":
-    get:
-      summary: List all reservations
-      tags:
-      - Reservations
-      description: List all reservations
-      security:
-      - Bearer: {}
-      responses:
-        '200':
-          description: List of reservations
+  "/signup":
     post:
-      summary: Create a new reservation
+      summary: Sign Up
       tags:
-      - Reservations
+      - Users
       parameters: []
       responses:
-        '201':
-          description: Reservation created
-        '422':
-          description: Invalid request
+        '200':
+          description: Logged in successfully
       requestBody:
         content:
           application/json:
             schema:
               type: object
               properties:
-                expert_id:
-                  type: integer
-                user_id:
-                  type: integer
-                city:
-                  type: string
-                date:
-                  type: string
-                  format: date
-              required:
-              - expert_id
-              - user_id
-              - city
-              - date
-  "/api/v1/reservations/{id}":
-    parameters:
-    - name: id
-      in: path
-      required: true
-      schema:
-        type: integer
-    get:
-      summary: Show reservation details
-      tags:
-      - Reservations
-      description: Show reservation details
-      security:
-      - Bearer: {}
-      responses:
-        '200':
-          description: Reservation details
-        '404':
-          description: Reservation not found
-  "/api/v1/users":
-    post:
-      summary: Login
-      tags:
-      - Users
-      parameters: []
-      responses:
-        '201':
-          description: User created
-        '422':
-          description: Invalid request
-        '200':
-          description: Login successful
-        '401':
-          description: Unauthorized
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                email:
-                  type: string
-                password:
-                  type: string
-              required:
-              - email
-              - password
-    delete:
-      summary: Logout
-      tags:
-      - Users
-      description: Log out the current user.
-      security:
-      - Bearer: {}
-      responses:
-        '200':
-          description: Logged out successfully
-    get:
-      summary: List all users
-      tags:
-      - Users
-      description: Retrieve a list of users.
-      responses:
-        '200':
-          description: List of users
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  "$ref": "#/definitions/user"
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                type: object
-                "$ref": "#/definitions/unauthorized_response"
-  "/api/v1/users/{id}":
-    parameters:
-    - name: id
-      in: path
-      required: true
-      schema:
-        type: integer
-    get:
-      summary: Show user details
-      tags:
-      - Users
-      description: Retrieve details of a user by ID.
-      responses:
-        '200':
-          description: User details
-          content:
-            application/json:
-              schema:
-                type: object
-                "$ref": "#/definitions/user"
-        '404':
-          description: User not found
+                user:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                    password:
+                      type: string
+                  required:
+                  - email
+                  - password
 servers:
 - url: https://{defaultHost}
   variables:
