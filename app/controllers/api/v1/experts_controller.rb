@@ -2,8 +2,11 @@ class Api::V1::ExpertsController < ApplicationController
   # before_action :authenticate_user!
 
   def index
-    @experts = Expert.includes(:specialization).where(removed: true)
-
+    @experts = Expert.joins(:specialization).where(removed: false).select(
+      'experts.id, experts.first_name, experts.last_name, experts.email,experts.address,experts.experience,
+      experts.status, experts.fee,
+      specializations.name, specializations.description'
+    )
     render json: @experts
   end
 
@@ -42,7 +45,7 @@ class Api::V1::ExpertsController < ApplicationController
   private
 
   def expert_params
-    params.require(:expert).permit(:first_name, :last_name, :email, :address, :experience, :status, :removed, :image,
+    params.require(:expert).permit(:first_name, :last_name, :email, :address, :experience, :status, :removed,
                                    :fee, :specialization_id)
   end
 end
