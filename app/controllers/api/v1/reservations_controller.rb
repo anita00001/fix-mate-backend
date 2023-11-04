@@ -2,8 +2,12 @@ class Api::V1::ReservationsController < ApplicationController
   # Show all reservations
   # GET /reservations
   def index
-    @reservations = Reservation.all
-    render json: @reservations
+    @reservations = Reservation.includes(expert: :specialization, user: {}).all
+    render json: @reservations.to_json(include: { expert: { only: %i[first_name last_name email fee],
+                                                            include: {
+                                                              specialization: { only: %i[id name] }
+                                                            } },
+                                                  user: { only: %i[id name] } })
   end
 
   # POST /reservations
