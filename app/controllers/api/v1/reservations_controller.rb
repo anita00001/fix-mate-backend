@@ -1,6 +1,4 @@
 class Api::V1::ReservationsController < ApplicationController
-  before_action :authenticate_user!
-
   # Show all reservations
   # GET /reservations
   def index
