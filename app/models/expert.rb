@@ -8,6 +8,7 @@ class Expert < ApplicationRecord
 
   has_many :reservations
   belongs_to :specialization
+  has_one_attached :image
 
   def change_removed_status
     update(removed: !removed)
