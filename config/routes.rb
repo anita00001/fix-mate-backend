@@ -1,6 +1,4 @@
-Rails.application.routes.draw do
- root to: 'api/v1/experts#index'
-  
+Rails.application.routes.draw do  
   mount Rswag::Ui::Engine => '/api-docs'
   mount Rswag::Api::Engine => '/api-docs'
 
@@ -24,7 +22,9 @@ Rails.application.routes.draw do
         end
       end
       resources :users
-      resources :specializations, only: [:create]
+
+      resources :specializations, only: [:index, :create]
+
       get '/getexperts/data', to: 'experts#experts_data', as: 'experts_data'
     end
   end
