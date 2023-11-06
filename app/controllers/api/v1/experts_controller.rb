@@ -42,6 +42,15 @@ class Api::V1::ExpertsController < ApplicationController
     end
   end
 
+  def experts_data
+    @data = Expert.all
+    if @data
+      render json: @data
+    else
+      render json: { status: 'error', message: 'Error occurred when fetching data' }, status: :unprocessable_entity  
+    end
+  end
+
   private
 
   def expert_params
