@@ -25,6 +25,7 @@ Rails.application.routes.draw do
       end
       resources :users
       resources :specializations, only: [:create]
+      get '/getexperts/data', to: 'experts#experts_data', as: 'experts_data'
     end
   end
 end
