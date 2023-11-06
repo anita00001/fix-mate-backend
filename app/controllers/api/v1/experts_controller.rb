@@ -7,6 +7,11 @@ class Api::V1::ExpertsController < ApplicationController
       experts.status, experts.fee,
       specializations.name, specializations.description'
     )
+
+    @experts = @experts.map do |expert|
+      expert.attributes.merge(image_url: expert.image.attached? ? rails_blob_url(expert.image) : nil)
+    end
+
     render json: @experts
   end
 
@@ -16,10 +21,13 @@ class Api::V1::ExpertsController < ApplicationController
 
   def create
     @expert = Expert.new(expert_params)
+    @expert.image.attach(params[:expert][:image])
 
     if @expert.save
+      image_url = @expert.image.attached? ? rails_blob_url(@expert.image) : nil
       render json: {
-        status: { success: true, message: 'Expert created successfully' }
+        status: { success: true, message: 'Expert created successfully' },
+        image_url:
       }
     else
       render json: @expert.errors, status: :unprocessable_entity
@@ -30,7 +38,11 @@ class Api::V1::ExpertsController < ApplicationController
     @expert = Expert.find(params[:id])
     @specialization = @expert.specialization
 
-    render json: @specialization
+    render json: {
+      expert: @expert,
+      image_url: @expert.image.service_url,
+      specialization: @specialization
+    }
   end
 
   def toggle_remove
@@ -47,7 +59,7 @@ class Api::V1::ExpertsController < ApplicationController
     if @data
       render json: @data
     else
-      render json: { status: 'error', message: 'Error occurred when fetching data' }, status: :unprocessable_entity  
+      render json: { status: 'error', message: 'Error occurred when fetching data' }, status: :unprocessable_entity
     end
   end
 
@@ -55,6 +67,6 @@ class Api::V1::ExpertsController < ApplicationController
 
   def expert_params
     params.require(:expert).permit(:first_name, :last_name, :email, :address, :experience, :status, :removed,
-                                   :fee, :specialization_id)
+                                   :fee, :specialization_id, :image)
   end
 end
