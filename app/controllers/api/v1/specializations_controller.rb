@@ -1,4 +1,9 @@
 class Api::V1::SpecializationsController < ApplicationController
+  def index
+    @specializations = Specialization.all
+    render json: @specializations, status: :ok
+  end
+
   def create
     @specialization = Specialization.new(specialization_params)
     if @specialization.save
