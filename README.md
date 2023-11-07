@@ -164,6 +164,20 @@ The collaborators of this project.
 > - LinkedIn: [anitaa-sharmaa](https://www.linkedin.com/in/anitaa-sharmaa/)
 > - Twitter: [@anitaa_sharmaa](https://twitter.com/anitaa_sharmaa)
 
+👤 **Ansar Ibrahim**
+- [GitHub](https://github.com/AnsarIbrahim)
+- [LinkedIn](https://linkedin.com/in/ansar-ibrahim/)
+- [Twitter](https://twitter.com/ansaradheeb)
+
+👤 **MoFuhidy**
+- GitHub: [@Mofuhidy](https://github.com/Mofuhidy)
+- LinkedIn: [@Mofuhidy](https://www.linkedin.com/in/mo-fuhidy/)
+
+👤 **Theodore Asimeng-Osei**
+- GitHub: [@githubhandle](https://github.com/Theodoraldo)
+- Twitter: [@twitterhandle](https://twitter.com/AsimengOse33947)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/theodoreasimeng/)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 🔭 Future Features <a name="future-features"></a>
