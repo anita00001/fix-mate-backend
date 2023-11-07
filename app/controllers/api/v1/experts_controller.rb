@@ -55,7 +55,7 @@ class Api::V1::ExpertsController < ApplicationController
   end
 
   def experts_data
-    @data = Expert.all
+    @data = Expert.where(removed: false)
     if @data
       render json: @data
     else
