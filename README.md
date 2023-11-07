@@ -28,6 +28,19 @@
 
 **Fix Mate** is committed to making everyday life more convenient by connecting users with trusted service providers. It is a one-stop platform for finding, booking, and  reviewing services, all from the comfort of your home. Users can communicate with service providers through the app, discussing specific requirements, asking questions, and confirming details.
 
+## API
+<!-- Replace by link after deploy -->
+> - [Link to API](http://localhost:4000)
+
+## Link to Front End
+<!-- Replace by link after deploy -->
+> - [Link to Front-end website](http://localhost:3000)
+
+> - [Link to Front-end Repository](https://github.com/anita00001/fix-mate-frontend)
+
+## Kanban Board Link
+> - [Link to Kanban Board](https://github.com/users/anita00001/projects/5)
+
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
@@ -107,8 +120,8 @@ cd fix-mate-backend
 ```sh
 bundle install
 ```
-2. Delete files `/config/credentials.yml.enc` and `/config/master.key`, if any
-3. Run the command to get the pair of credentials and master key
+2. Delete files `/config/credentials.yml.enc` and `/config/master.key`, (if any).
+3. Run the command to get the pairs of credentials and master key
 ```sh
 rails credentials:edit
 ```
@@ -176,7 +189,7 @@ The collaborators of this project.
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
- I would like to thank [Microverseinc](https://github.com/microverseinc) for [Readme-template](https://github.com/microverseinc/readme-template), our code reviewer
+> - We would like to thank [Microverseinc](https://github.com/microverseinc) for [Readme-template](https://github.com/microverseinc/readme-template), our code reviewer and external evaluator. We would extend our sincere gratitude to [Murat Korkmaz on Behance](https://www.behance.net/gallery/26425031/Vespa-Responsive-Redesign) for provinding the original design.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
