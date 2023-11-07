@@ -47,43 +47,6 @@ paths:
                   type: integer
                 specialization_id:
                   type: integer
-  "/api/v1/experts/{id}":
-    parameters:
-    - name: id
-      in: path
-      required: true
-      schema:
-        type: integer
-    get:
-      summary: Show expert details
-      tags:
-      - Experts
-      description: Show expert details
-      security:
-      - Bearer: {}
-      responses:
-        '200':
-          description: Expert details
-    put:
-      summary: Toggle remove status of expert
-      tags:
-      - Experts
-      parameters: []
-      responses:
-        '200':
-          description: Toggle successful
-        '422':
-          description: Toggle failed
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                removed:
-                  type: boolean
-              required:
-              - removed
   "/api/v1/reservations":
     get:
       summary: List all reservations
@@ -123,6 +86,49 @@ paths:
               - user_id
               - city
               - date
+  "/api/v1/specializations":
+    get:
+      summary: list all of specializations
+      tags:
+      - Specializations
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    description:
+                      type: string
+    post:
+      summary: creates a specialization
+      tags:
+      - Specializations
+      parameters: []
+      responses:
+        '201':
+          description: created
+        '422':
+          description: unprocessable entity
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+              required:
+              - name
+              - description
   "/signup":
     post:
       summary: Sign Up
