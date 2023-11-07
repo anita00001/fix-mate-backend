@@ -21,7 +21,6 @@ Rails.application.routes.draw do
           put :toggle_remove
         end
       end
-      resources :users
 
       resources :specializations, only: [:index, :create]
 
