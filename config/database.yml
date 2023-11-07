@@ -80,6 +80,4 @@ test:
 #
 production:
   <<: *default
-  database: fix_mate_backend_production
-  username: fix_mate_backend
-  password: <%= ENV["FIX_MATE_BACKEND_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
