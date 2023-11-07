@@ -47,6 +47,45 @@ paths:
                   type: integer
                 specialization_id:
                   type: integer
+  "/api/v1/reservations":
+    get:
+      summary: List all reservations
+      tags:
+      - Reservations
+      description: List all reservations
+      security:
+      - Bearer: {}
+      responses:
+        '200':
+          description: List of all Reservations
+    post:
+      summary: Create a new reservation
+      tags:
+      - Reservations
+      parameters: []
+      responses:
+        '201':
+          description: Reservation created
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                expert_id:
+                  type: integer
+                user_id:
+                  type: integer
+                city:
+                  type: string
+                date:
+                  type: string
+                  format: date
+              required:
+              - expert_id
+              - user_id
+              - city
+              - date
   "/signup":
     post:
       summary: Sign Up
