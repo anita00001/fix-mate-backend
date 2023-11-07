@@ -29,12 +29,16 @@
 **Fix Mate** is committed to making everyday life more convenient by connecting users with trusted service providers. It is a one-stop platform for finding, booking, and  reviewing services, all from the comfort of your home. Users can communicate with service providers through the app, discussing specific requirements, asking questions, and confirming details.
 
 ## API
-<!-- Replace by link after deploy -->
-> - [Link to API](http://localhost:4000)
+> - [Base Url](https://fixmate.onrender.com/)
+
+> - API Endpoints
+- api/v1/experts
+- api/v1/reservations
+- api/v1/specializations
+> - [API Documentation](https://fixmate.onrender.com/api-docs/index.html)
 
 ## Link to Front End
-<!-- Replace by link after deploy -->
-> - [Link to Front-end website](http://localhost:3000)
+> - [Live Link](https://fixmate.netlify.app/)
 
 > - [Link to Front-end Repository](https://github.com/anita00001/fix-mate-frontend)
 
