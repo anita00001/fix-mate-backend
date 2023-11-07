@@ -47,6 +47,43 @@ paths:
                   type: integer
                 specialization_id:
                   type: integer
+  "/api/v1/experts/{id}":
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+    get:
+      summary: Show expert details
+      tags:
+      - Experts
+      description: Show expert details
+      security:
+      - Bearer: {}
+      responses:
+        '200':
+          description: Expert details
+    put:
+      summary: Toggle remove status of expert
+      tags:
+      - Experts
+      parameters: []
+      responses:
+        '200':
+          description: Toggle successful
+        '422':
+          description: Toggle failed
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                removed:
+                  type: boolean
+              required:
+              - removed
   "/api/v1/reservations":
     get:
       summary: List all reservations
