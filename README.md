@@ -147,6 +147,19 @@ rails db:migrate
   rails db:seed
 ```
 
+### Run Test
+
+> - Run Linters Check with Rubocop
+```sh
+  rubocop
+```
+
+
+> - Run Test with RSpec
+```sh
+rails db:migrate RAILS_ENV=test && rspec spec
+```
+
 ### Running the App
 
 > - To run the application, run the following command:
