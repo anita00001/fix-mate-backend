@@ -50,6 +50,7 @@
 > - [Number of Team Members - 4](#-authors-) 
 
 ## Entity Relationship Diagram
+  ![fixmate_erd_digram](https://github.com/anita00001/fix-mate-backend/assets/117971223/6e6fbe33-9ac7-467d-bdea-a590ee1ea9a8)
 
 
 ## 🛠 Built With <a name="built-with"></a>
