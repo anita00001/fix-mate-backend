@@ -1,0 +1,161 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/experts":
+    get:
+      summary: List all experts
+      tags:
+      - Experts
+      description: List all experts
+      security:
+      - Bearer: {}
+      responses:
+        '200':
+          description: List of experts
+    post:
+      summary: Create a new expert
+      tags:
+      - Experts
+      parameters: []
+      responses:
+        '200':
+          description: Expert created
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                last_name:
+                  type: string
+                email:
+                  type: string
+                address:
+                  type: string
+                experience:
+                  type: integer
+                status:
+                  type: string
+                removed:
+                  type: boolean
+                fee:
+                  type: integer
+                specialization_id:
+                  type: integer
+  "/api/v1/reservations":
+    get:
+      summary: List all reservations
+      tags:
+      - Reservations
+      description: List all reservations
+      security:
+      - Bearer: {}
+      responses:
+        '200':
+          description: List of all Reservations
+    post:
+      summary: Create a new reservation
+      tags:
+      - Reservations
+      parameters: []
+      responses:
+        '201':
+          description: Reservation created
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                expert_id:
+                  type: integer
+                user_id:
+                  type: integer
+                city:
+                  type: string
+                date:
+                  type: string
+                  format: date
+              required:
+              - expert_id
+              - user_id
+              - city
+              - date
+  "/api/v1/specializations":
+    get:
+      summary: list all of specializations
+      tags:
+      - Specializations
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    description:
+                      type: string
+    post:
+      summary: creates a specialization
+      tags:
+      - Specializations
+      parameters: []
+      responses:
+        '201':
+          description: created
+        '422':
+          description: unprocessable entity
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+              required:
+              - name
+              - description
+  "/signup":
+    post:
+      summary: Sign Up
+      tags:
+      - Users
+      parameters: []
+      responses:
+        '200':
+          description: Logged in successfully
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                    password:
+                      type: string
+                  required:
+                  - email
+                  - password
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: 127.0.0.1:4000
